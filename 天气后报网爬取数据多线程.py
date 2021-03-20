@@ -99,7 +99,7 @@ def main():
     text = response.content.decode('gbk')
     html = etree.HTML(text)
     city_urls = html.xpath("//div[@class='citychk']//dd//a/@href")
-    city_urls = list(map(lambda url: "http://www.tianqihoubao.com"+url, city_urls))[347:]
+    city_urls = list(map(lambda url: "http://www.tianqihoubao.com"+url, city_urls))
     for city_url in city_urls:
         city_url_queue.put(city_url)
 
