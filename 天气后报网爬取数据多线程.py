@@ -111,10 +111,7 @@ def main():
     for i in range(7):
         t=Consumer(details_url_queue,city_url_queue)
         t.start()
-
-    
-
-
+        
 
 if __name__ == '__main__':
     main()
