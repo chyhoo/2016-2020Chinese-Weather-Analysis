@@ -1,8 +1,11 @@
+# 生成一张所有城市的csv表
+
 import os,csv
 
 path = "D:\\2016-2020全国地级市天气(城市)"
 os.chdir(path)
 
+# 提取数据
 infos=[]
 for filename in os.listdir(path):
     print("正在整合:", filename)
@@ -11,7 +14,8 @@ for filename in os.listdir(path):
         title = next(csv_read)
         for info in csv_read:
             infos.append(info)
-            
+
+# 写入数据
 os.makedirs("D:\\2016-2020全国地级市天气(大汇总)", exist_ok=True)
 new_path = ''.join(["D:\\2016-2020全国地级市天气(大汇总)\\2016-2020全国地级市天气大汇总.csv"])
 with open(new_path,'w',encoding='utf-8',newline='') as fp:
