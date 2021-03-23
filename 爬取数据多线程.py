@@ -26,6 +26,7 @@ class Producer(threading.Thread):
     # threading.thread 有 run 方法，会从run()方法开始执行函数    
     def run(self):
         while True:
+            # 当栈为空时表明所有的url已生产完毕，退出生产者模式
             if self.city_url_queue.empty():
                 break
             url = self.city_url_queue.get()
@@ -47,6 +48,7 @@ class Consumer(threading.Thread):
     
     def run(self):
         while True:
+            # 当两个栈为空时表明所有的url已使用完毕，退出消费者模式
             if self.city_url_queue.empty() and self.details_url_queue.empty():
                 break
             url = self.details_url_queue.get()
@@ -112,10 +114,7 @@ def main():
     for i in range(7):
         t=Consumer(details_url_queue,city_url_queue)
         t.start()
-
-    
-
-
-
+        
+        
 if __name__ == '__main__':
     main()
