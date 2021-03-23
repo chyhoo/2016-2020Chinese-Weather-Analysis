@@ -1,4 +1,4 @@
-import requests
+import requests, re
 from lxml import etree
 import csv
 import time
@@ -96,7 +96,7 @@ def main():
     details_url_queue = Queue(1000)
     city_url_queue = Queue(363)
     
-    获取每个城市的url
+    # 获取每个城市的url
     base_url = "http://www.tianqihoubao.com/lishi"
     response = requests.get(base_url, headers=get_headers.get_headers())
     text = response.content.decode('gbk')
@@ -119,3 +119,4 @@ def main():
         
 if __name__ == '__main__':
     main()
+
