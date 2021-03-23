@@ -7,13 +7,14 @@ os.chdir(path)
 count={}
 lack_data=[]
 
-# 每个城市的csv表的数量
+# 统计每个城市的csv表的数量
 for filename in os.listdir(path):
     filename=''.join(re.findall(r'[^0-9]',filename))[:-9]
     count.setdefault(filename,0)
     count[filename]+=1
     
 # 查找有缺失数据的城市
+# csv表数量不足60即为有缺失数据的城市
 for k, v in count.items():
     if v != 60:
         lack_data.append(k)
