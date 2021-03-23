@@ -83,8 +83,8 @@ def main():
                 
                 print(city_url.format(year, month))
                 
+                # 设置延时,防止造成服务器拒绝连接
                 rand = random.randint(1, 3)
-                print(rand)
                 time.sleep(rand)
                 
                 # 获取infos
