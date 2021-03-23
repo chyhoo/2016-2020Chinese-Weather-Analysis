@@ -65,7 +65,7 @@ class Consumer(threading.Thread):
         soup = BeautifulSoup(text, 'lxml')
         # 获取 城市 日期 天气状态 气温 风力风向信息
         city = list(soup.find('div',attrs={"id":"s-calder","class":"box"}).stripped_strings)[0]
-        city = ''.join(re.findall(r'[^0-9]',city))[:-9]
+        city_name = ''.join(re.findall(r'[^0-9]',city))[:-9]
         trs = soup.find_all("tr")[1:]
         for tr in trs:
             tds = tr.find_all("td")
@@ -74,7 +74,7 @@ class Consumer(threading.Thread):
             temp = ''.join(list(tds[2].stripped_strings)[0].split())
             wind = ''.join(list(tds[3].stripped_strings)[0].split())
             info = {
-                '城市': city,
+                '城市': city_name,
                 '日期': date,
                 '天气状态': state,
                 '气温': temp,
