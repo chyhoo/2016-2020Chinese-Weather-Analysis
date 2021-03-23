@@ -103,6 +103,7 @@ def main():
     html = etree.HTML(text)
     city_urls = html.xpath("//div[@class='citychk']//dd//a/@href")
     city_urls = list(map(lambda url: "http://www.tianqihoubao.com"+url, city_urls))
+    # city_urls=   查找缺失数据并重构url.py返回的数据
     for city_url in city_urls:
         city_url_queue.put(city_url)
 
