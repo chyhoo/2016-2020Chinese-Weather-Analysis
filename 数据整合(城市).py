@@ -29,12 +29,14 @@ for filename in os.listdir(path):
     print("正在整合:", filename)
     infos = []
     read_path = ''.join(["D:\\2016-2020全国地级市天气(月)\\", filename])
+    
+    # 获取每张csv表的数据
     with open(read_path, 'r', encoding='utf-8') as fp:
         csv_read = csv.reader(fp)
         title = next(csv_read)
         for info in csv_read:
             infos.append(info)
-
+    # 将数据追加进相应的csv表中
     city_name = ''.join(re.findall(r'[^0-9]', filename))[:-9]
     csv_path = ''.join(["D:\\2016-2020全国地级市天气(城市)\\", city_name, '.csv'])
     with open(csv_path, 'a+', encoding='utf-8', newline='') as fp:
