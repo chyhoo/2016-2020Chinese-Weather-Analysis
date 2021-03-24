@@ -69,13 +69,13 @@ class Consumer(threading.Thread):
         trs = soup.find_all("tr")[1:]
         for tr in trs:
             tds = tr.find_all("td")
-            date = ''.join(list(tds[0].stripped_strings)[0].split())
+            data = ''.join(list(tds[0].stripped_strings)[0].split())
             state = ''.join(list(tds[1].stripped_strings)[0].split())
             temp = ''.join(list(tds[2].stripped_strings)[0].split())
             wind = ''.join(list(tds[3].stripped_strings)[0].split())
             info = {
                 '城市': city_name,
-                '日期': date,
+                '日期': data,
                 '天气状态': state,
                 '气温': temp,
                 '风力风向': wind
