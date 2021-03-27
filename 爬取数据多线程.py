@@ -52,9 +52,9 @@ class Consumer(threading.Thread):
             if self.city_url_queue.empty() and self.details_url_queue.empty():
                 break
             url = self.details_url_queue.get()
-            self.get_page(url)
+            self.get_detail(url)
             
-    def get_page(self,url):
+    def get_detail(self,url):
         """
             获取具体的天气信息
         """
